@@ -31,11 +31,10 @@ jobs:
         run: aws sts get-caller-identity
       - name: Create S3 Bucket
         run: |
-            BUCKET="my-bucket-${{ github.run_id }}"
-            echo "Using bucket: $BUCKET"
+            echo "Creating..."
             aws s3api create-bucket \
-              --bucket "$BUCKET" \
+              --bucket "joel-demo-gh-runner" \
               --region us-east-1
 
       - name: Upload sample file
-        run: aws s3 cp ./s3-upload.txt s3://$BUCKET/
+        run: aws s3 cp ./s3-upload.txt s3://joel-demo-gh-runner/
