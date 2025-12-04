@@ -27,10 +27,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Verify IAM Role
         run: aws sts get-caller-identity
-
       - name: Create S3 Bucket
         run: |
             BUCKET="my-bucket-${{ github.run_id }}"
